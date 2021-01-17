@@ -1,0 +1,193 @@
+Microsoft Windows [Version 10.0.18363.1316]
+(c) 2019 Microsoft Corporation. All rights reserved.
+
+D:\Personal\PR>mkdir test_repo
+
+D:\Personal\PR>cd test_repo
+
+D:\Personal\PR\test_repo>git init
+Initialized empty Git repository in D:/Personal/PR/test_repo/.git/
+
+D:\Personal\PR\test_repo>git add testpy.py
+
+D:\Personal\PR\test_repo>git status
+On branch master
+
+No commits yet
+
+Changes to be committed:
+  (use "git rm --cached <file>..." to unstage)
+        new file:   testpy.py
+
+
+D:\Personal\PR\test_repo>git commit -m "Added testpy.py"
+[master (root-commit) 9239afc] Added testpy.py
+ 1 file changed, 1 insertion(+)
+ create mode 100644 testpy.py
+
+D:\Personal\PR\test_repo>git status
+On branch master
+nothing to commit, working tree clean
+
+D:\Personal\PR\test_repo>git status
+On branch master
+Changes not staged for commit:
+  (use "git add <file>..." to update what will be committed)
+  (use "git restore <file>..." to discard changes in working directory)
+        modified:   testpy.py
+
+no changes added to commit (use "git add" and/or "git commit -a")
+
+D:\Personal\PR\test_repo>git add .
+
+D:\Personal\PR\test_repo>git status
+On branch master
+Changes to be committed:
+  (use "git restore --staged <file>..." to unstage)
+        modified:   testpy.py
+
+
+D:\Personal\PR\test_repo>git commit -m "newline in testpy.py"
+[master e61be90] newline in testpy.py
+ 1 file changed, 2 insertions(+), 1 deletion(-)
+
+D:\Personal\PR\test_repo>git checkout -b new
+Switched to a new branch 'new'
+
+D:\Personal\PR\test_repo>git add .
+
+D:\Personal\PR\test_repo>git commit -m "First COmmit on new branch"
+[new 83281a7] First COmmit on new branch
+ 1 file changed, 2 insertions(+), 1 deletion(-)
+
+D:\Personal\PR\test_repo>git checkout master
+Switched to branch 'master'
+
+D:\Personal\PR\test_repo>git checkout new
+Switched to branch 'new'
+
+D:\Personal\PR\test_repo>git checkout master
+Switched to branch 'master'
+
+D:\Personal\PR\test_repo>git add .
+
+D:\Personal\PR\test_repo>git status
+On branch master
+Changes to be committed:
+  (use "git restore --staged <file>..." to unstage)
+        new file:   testpy2.py
+
+
+D:\Personal\PR\test_repo>git commit -m "added testpy2.py"
+[master b07e821] added testpy2.py
+ 1 file changed, 1 insertion(+)
+ create mode 100644 testpy2.py
+
+D:\Personal\PR\test_repo>git checkout new
+Switched to branch 'new'
+
+D:\Personal\PR\test_repo>git merge master
+Merge made by the 'recursive' strategy.
+ testpy2.py | 1 +
+ 1 file changed, 1 insertion(+)
+ create mode 100644 testpy2.py
+
+D:\Personal\PR\test_repo>git checkout master
+Switched to branch 'master'
+
+D:\Personal\PR\test_repo>git remote add origin https://github.com/kresnofatih/testrepository.git
+
+D:\Personal\PR\test_repo>git checkout master
+Already on 'master'
+
+D:\Personal\PR\test_repo>git push -u origin master
+Enumerating objects: 9, done.
+Counting objects: 100% (9/9), done.
+Delta compression using up to 4 threads
+Compressing objects: 100% (4/4), done.
+Writing objects: 100% (9/9), 774 bytes | 110.00 KiB/s, done.
+Total 9 (delta 0), reused 0 (delta 0), pack-reused 0
+To https://github.com/kresnofatih/testrepository.git
+ * [new branch]      master -> master
+Branch 'master' set up to track remote branch 'master' from 'origin'.
+
+D:\Personal\PR\test_repo>git config --global user.name "Fatih"
+
+D:\Personal\PR\test_repo>git config --global user.email "kresnofatihimani.private@gmail.com"
+
+D:\Personal\PR\test_repo>git pull origin master
+remote: Enumerating objects: 5, done.
+remote: Counting objects: 100% (5/5), done.
+remote: Compressing objects: 100% (2/2), done.
+remote: Total 3 (delta 0), reused 0 (delta 0), pack-reused 0
+Unpacking objects: 100% (3/3), 667 bytes | 4.00 KiB/s, done.
+From https://github.com/kresnofatih/testrepository
+ * branch            master     -> FETCH_HEAD
+   b07e821..c6ec588  master     -> origin/master
+Updating b07e821..c6ec588
+Fast-forward
+ testpy.py | 3 +--
+ 1 file changed, 1 insertion(+), 2 deletions(-)
+
+D:\Personal\PR\test_repo>git add .
+
+D:\Personal\PR\test_repo>git commit -m "change"
+[master f93b3fc] change
+ 1 file changed, 2 insertions(+)
+
+D:\Personal\PR\test_repo>git push
+To https://github.com/kresnofatih/testrepository.git
+ ! [rejected]        master -> master (fetch first)
+error: failed to push some refs to 'https://github.com/kresnofatih/testrepository.git'
+hint: Updates were rejected because the remote contains work that you do
+hint: not have locally. This is usually caused by another repository pushing
+hint: to the same ref. You may want to first integrate the remote changes
+hint: (e.g., 'git pull ...') before pushing again.
+hint: See the 'Note about fast-forwards' in 'git push --help' for details.
+
+D:\Personal\PR\test_repo>git pull origin master
+remote: Enumerating objects: 5, done.
+remote: Counting objects: 100% (5/5), done.
+remote: Compressing objects: 100% (2/2), done.
+remote: Total 3 (delta 0), reused 0 (delta 0), pack-reused 0
+Unpacking objects: 100% (3/3), 662 bytes | 5.00 KiB/s, done.
+From https://github.com/kresnofatih/testrepository
+ * branch            master     -> FETCH_HEAD
+   c6ec588..39c0c61  master     -> origin/master
+Auto-merging testpy.py
+CONFLICT (content): Merge conflict in testpy.py
+Automatic merge failed; fix conflicts and then commit the result.
+
+D:\Personal\PR\test_repo>git add .
+
+D:\Personal\PR\test_repo>git commit -m "change fixed merge conflict"
+[master 0dd9cbb] change fixed merge conflict
+
+D:\Personal\PR\test_repo>git push
+Enumerating objects: 10, done.
+Counting objects: 100% (10/10), done.
+Delta compression using up to 4 threads
+Compressing objects: 100% (4/4), done.
+Writing objects: 100% (6/6), 608 bytes | 202.00 KiB/s, done.
+Total 6 (delta 0), reused 0 (delta 0), pack-reused 0
+To https://github.com/kresnofatih/testrepository.git
+   39c0c61..0dd9cbb  master -> master
+
+D:\Personal\PR\test_repo>git checkout new
+Switched to branch 'new'
+
+D:\Personal\PR\test_repo>git push origin new
+Enumerating objects: 9, done.
+Counting objects: 100% (8/8), done.
+Delta compression using up to 4 threads
+Compressing objects: 100% (4/4), done.
+Writing objects: 100% (5/5), 611 bytes | 305.00 KiB/s, done.
+Total 5 (delta 0), reused 0 (delta 0), pack-reused 0
+remote:
+remote: Create a pull request for 'new' on GitHub by visiting:
+remote:      https://github.com/kresnofatih/testrepository/pull/new/new
+remote:
+To https://github.com/kresnofatih/testrepository.git
+ * [new branch]      new -> new
+
+D:\Personal\PR\test_repo>
